@@ -1,0 +1,19 @@
+{
+  "name": "kl-react-components",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IloveKFCchicken/kl-react-components.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IloveKFCchicken/kl-react-components/issues"
+  },
+  "homepage": "https://github.com/IloveKFCchicken/kl-react-components#readme"
+}
