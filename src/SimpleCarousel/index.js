@@ -10,6 +10,11 @@ export default class SimpleCarousel extends Component {
         super(props);
         this.scrollX = 0;
         this.isMoving = false;
+        this.navClickHandel = this.navClickHandel.bind(this);
+        this.domTransform = this.domTransform.bind(this);
+        this.reset = this.reset.bind(this);
+
+
         this.state = {
             settings : {
                 dots: false,
@@ -52,7 +57,7 @@ export default class SimpleCarousel extends Component {
         })
     }
 
-    navClickHandel = (type)=>{
+    navClickHandel(type){
         const {config:{itemWidth,scrollNum}} = this.state;
 
         if(type == 1){
@@ -65,7 +70,7 @@ export default class SimpleCarousel extends Component {
         this.domTransform();
     }
 
-    domTransform = ()=>{
+    domTransform (){
         if(this.isMoving) return
 
         this.isMoving = true;
@@ -86,7 +91,7 @@ export default class SimpleCarousel extends Component {
         }
     }
 
-    reset = ()=>{
+    reset(){
         const {settings:{speed}} = this.state;
         setTimeout(()=>{
             this.isMoving = false;
