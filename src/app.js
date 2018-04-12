@@ -4,15 +4,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import {SimpleCarousel} from './index';
+// import {SimpleCarousel} from './index';
 const App = ()=>{
     return (
         <div>
-            <SimpleCarousel>
-                {
-                    [1,2,3,4,5,6].map((item,i)=><div key={i}>{i+1}</div>)
-                }
-            </SimpleCarousel>
+            app111rrr
         </div>
     )
 }

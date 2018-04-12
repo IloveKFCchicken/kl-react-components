@@ -4,7 +4,7 @@
 import React, {Component} from 'react'
 import {Icon} from 'react-fa'
 
-import './index.less'
+// import './index.less'
 export default class SimpleCarousel extends Component {
     constructor(props) {
         super(props);
