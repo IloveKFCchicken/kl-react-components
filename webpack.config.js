@@ -4,7 +4,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var config = {
-    devtool: 'cheap-module-eval-source-map',
+    devtool: 'cheap-source-map',
     entry:  __dirname + "/src/index.js",//已多次提及的唯一入口文件
     output: {
         path: __dirname + "/build",//打包后的文件存放的地方
