@@ -5,7 +5,9 @@
 import React, {Component} from 'react'
 
 const Button = ()=>{
-    return <div>button</div>
+    return (
+        <div>button</div>
+    )
 }
 
-export default Button;
+export default Button
