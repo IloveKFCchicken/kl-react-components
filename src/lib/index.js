@@ -3,6 +3,6 @@
  */
 // import SimpleCarousel from './SimpleCarousel'
 
-var _Button = require('./Button');
+import Button from './Button'
 
-exports.Button = _Button.default;
+export {Button}

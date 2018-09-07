@@ -7,9 +7,11 @@ import {Button} from './lib';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 // import {SimpleCarousel} from './index';
+
 const Home = () => (
     <div>
         <h2>Home</h2>
+        <Button />
     </div>
 );
 
@@ -53,7 +55,6 @@ const App = ()=>{
     return (
         <Router>
             <div>
-                app111rrr
                 <ul>
                     <li>
                         <Link to="/">Home</Link>
@@ -69,8 +70,8 @@ const App = ()=>{
                 <Route path="/about" component={About} />
                 <Route path="/topics" component={Topics} />
 
-                <Button />
             </div>
+
         </Router>
     )
 }
