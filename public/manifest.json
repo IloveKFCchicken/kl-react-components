@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "kl-react-components",
+  "name": "kl-react-components Sample",
   "icons": [
     {
       "src": "favicon.ico",
