@@ -1,13 +1,7 @@
-/**
- * Created by kyx on 2018/3/23.
- */
 import React from 'react';
+import {Button} from '../../lib';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-
-// import {SimpleCarousel} from './index';
-import Home from './Pages/Home';
-import About from './Pages/About';
 
 const Topics = ({ match }) => {
     console.log(match)
@@ -41,27 +35,4 @@ const Topic = ({ match }) => (
     </div>
 );
 
-
-const App = ()=>{
-    return (
-        <Router>
-            <div>
-                <ul>
-                    <li>
-                        <Link to="/component">Home</Link>
-                    </li>
-                    <li>
-                        <Link to="/component/about">About</Link>
-                    </li>
-                    <li>
-                        <Link to="/component/topics">Topics</Link>
-                    </li>
-                </ul>
-                <Route exact path="/component" component={Home} />
-                <Route path="/component/about" component={About} />
-                <Route path="/component/topics" component={Topics} />
-            </div>
-        </Router>
-    )
-}
-ReactDOM.render(<App />, document.getElementById('root'));
+export default Topics
