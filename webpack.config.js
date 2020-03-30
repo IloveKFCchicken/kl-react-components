@@ -1,35 +1,41 @@
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var config = {
-    devtool: 'cheap-source-map',
-    entry:  __dirname + "/src/index.js",//已多次提及的唯一入口文件
-    output: {
-        path: __dirname + "/dist",//打包后的文件存放的地方
-        filename: "bundle.js"//打包后输出文件的文件名
-    },
-    module: {
-        rules: [
-            {
-                test: /(\.jsx|\.js)$/,
-                use: {
-                    loader: "babel-loader",
-                },
-                exclude: /node_modules/
-            },
-            {
-                test: /\.less$|\.css$/,
-                use: [ 'style-loader', 'css-loader' ,'less-loader']
-            }
-        ]
-    },
-    devServer: {
-        contentBase: "./public",//本地服务器所加载的页面所在的目录
-        historyApiFallback: true,//不跳转
-        inline: true//实时刷新
-    },
-    plugins: [
-        new HtmlWebpackPlugin({template: './public/index.html'})
+  // devtool: 'cheap-source-map',
+  // entry: __dirname + "/src/lib/index.js",
+  entry: __dirname + "/src/index.js",
+  output: {
+    path: __dirname + "/dist",
+    filename: "bundle.js"
+  },
+  module: {
+    rules: [
+      {
+        test: /\.m?js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
+      },
+      {
+        test: /\.less$|\.css$/,
+        use: ['style-loader', 'css-loader', 'less-loader']
+      }
     ]
+  },
+  devServer: {
+    contentBase: path.join(__dirname, 'public'),
+    historyApiFallback: true,
+    compress: true,
+    port: 9000
+  },
+  plugins: [
+    new HtmlWebpackPlugin({ template: './public/index.html' })
+  ]
 }
 
 

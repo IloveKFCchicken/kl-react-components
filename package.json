@@ -22,23 +22,31 @@
   },
   "homepage": "https://github.com/IloveKFCchicken/kl-react-components#readme",
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.4",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.24.1",
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "babel-loader": "^8.1.0",
     "css-loader": "^0.28.11",
     "html-webpack-plugin": "^3.0.6",
-    "less": "^3.0.1",
+    "less": "^3.11.1",
     "less-loader": "^4.1.0",
-    "phaser": "^3.2.1",
+    "phaser": "^3.22.0",
     "postcss": "^6.0.21",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "react-fa": "^5.0.0",
     "react-router-dom": "^4.3.1",
     "style-loader": "^0.23.1",
-    "webpack": "^4.1.1",
-    "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.1"
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.8.7",
+    "@types/jest": "^25.1.4",
+    "@types/node": "^13.9.5",
+    "@types/react": "^16.9.27",
+    "@types/react-dom": "^16.9.5",
+    "typescript": "^3.8.3"
   }
 }
