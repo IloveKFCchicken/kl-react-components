@@ -1,20 +1,17 @@
-import React,{render} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './Pages/app'
-
-// ReactDOM.render(<App />, document.getElementById('root'));
-
-// function App(params) {
-//   return (
-//     <div>11</div>
-//   )
-// }
-
-function HelloMessage({ name }) {
-  return <div>Hello {name}</div>;
-}
+import './index.css';
+import App from './Pages/App';
+import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-  <HelloMessage name="Taylor" />,
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
   document.getElementById('root')
 );
+
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+serviceWorker.unregister();
