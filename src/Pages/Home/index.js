@@ -1,5 +1,7 @@
 import React from 'react';
 import {Button} from '../../lib';
+import RenderProps from './RenderProps';
+
 
 const Home = () => (
     <div>
@@ -7,6 +9,7 @@ const Home = () => (
         <Button />
 
         <p>111</p>
+      <RenderProps />
     </div>
 );
 

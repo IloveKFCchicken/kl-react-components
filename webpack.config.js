@@ -17,7 +17,7 @@ var config = {
                 exclude: /node_modules/
             },
             {
-                test: /\.css$/,
+                test: /\.less$|\.css$/,
                 use: [ 'style-loader', 'css-loader' ,'less-loader']
             }
         ]

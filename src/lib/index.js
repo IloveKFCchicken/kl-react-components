@@ -4,5 +4,9 @@
 // import SimpleCarousel from './SimpleCarousel'
 
 import Button from './Button'
+import Page from './Page'
 
-export {Button}
+export {
+  Button,
+  Page
+}
