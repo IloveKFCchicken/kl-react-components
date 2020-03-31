@@ -1,35 +1,54 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Link} from "react-router-dom";
+import {
+  Route,
+  Switch,
+  useLocation,
+  useParams,
+  Link
+} from "react-router-dom";
 
-import Home from './Home';
-import About from './About';
-import Detail from './Detail';
 
-const Nav = () => (
-    <ul>
-        <li>
-            <Link to="/component">Home</Link>
-        </li>
-        <li>
-            <Link to="/component/about">About</Link>
-        </li>
-        <li>
-            <Link to="/component/topics">Detail</Link>
-        </li>
-    </ul>
-)
+import About from './About'
+import Detail from './Detail'
+import Home from './Home'
+import Component from './Component'
 
-const App = () => {
-    return (
-        <Router>
-            <div>
-                <Nav />
-                <Route exact path="/component" component={Home}/>
-                <Route path="/component/about" component={About}/>
-                <Route path="/component/topics" component={Detail}/>
-            </div>
-        </Router>
-    )
+import './App.less'
+
+function BlogPost() {
+  let { slug } = useParams();
+  return <div>Now showing post {slug}</div>;
 }
 
-export default App
+function usePageViews() {
+  let location = useLocation();
+  React.useEffect(() => {
+    console.log(location.pathname)
+  }, [location]);
+}
+
+
+function App() {
+  usePageViews();
+  return (
+    <div className="App-container">
+      <div className='aside'>
+        <Link to='/'>Home</Link>
+        <Link to='/blog/100'>Blog</Link>
+        <Link to='/detail'>detail</Link>
+        <Link to='/about'>about</Link>
+        <Link to='/components'>components</Link>
+      </div>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/about" component={About} />
+        <Route path="/detail" component={Detail} />
+        <Route path="/components" component={Component} />
+        <Route path="/blog/:slug">
+          <BlogPost />
+        </Route>
+      </Switch>
+    </div>
+  );
+}
+export default App;

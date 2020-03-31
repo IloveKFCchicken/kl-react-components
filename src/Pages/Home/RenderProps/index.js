@@ -1,15 +1,15 @@
 import React from 'react';
-import {Page} from '../../../lib';
+import { Page } from '../../../lib';
 
-class RenderProps extends React.Component{
+class RenderProps extends React.Component {
   constructor(props) {
     super(props)
   }
 
-  render(){
-    return(
+  render() {
+    return (
       <Page title="RenderProps">
-
+        1111
       </Page>
     )
   }
