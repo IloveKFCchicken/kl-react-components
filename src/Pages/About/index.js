@@ -4,7 +4,7 @@ import {Button} from '../../lib';
 const About = () => (
     <div>
         <h2>About</h2>
-        <Button />
+        <Button>myBotton</Button>
     </div>
 );
 
