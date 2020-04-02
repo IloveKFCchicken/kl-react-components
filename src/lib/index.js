@@ -5,8 +5,10 @@
 
 import Button from './Button'
 import Page from './Page'
+import Ripple from './Ripple'
+
 
 export {
-  Button,
+  Button, Ripple,
   Page
 }

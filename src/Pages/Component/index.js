@@ -1,16 +1,36 @@
 import React from 'react';
-import { Button } from '../../lib';
+import { Button, Page } from '../../lib';
 
-export default (props) => {
+import './index.less'
+
+export default function ComponentPage(props) {
   return (
-    <div>
-      <h2>Component</h2>
+    <Page>
+      <h1>Component</h1>
       <div>
-        <Button>myBotton</Button>
-        <Button>myBotton</Button>
-        <Button>myBotton</Button>
-        <Button>myBotton</Button>
+        <h2>Button</h2>
+        <div className='row'>
+          <Button>myBotton</Button>
+          <Button type='primary'>myBotton</Button>
+          <Button type='success'>myBotton</Button>
+          <Button type='info'>myBotton</Button>
+          <Button type='warn'>myBotton</Button>
+          <Button type='error'>myBotton</Button>
+        </div>
+        <div className='row'>
+          <Button border>myBotton</Button>
+          <Button type='primary' border>myBotton</Button>
+          <Button type='success' border>myBotton</Button>
+          <Button type='info' border>myBotton</Button>
+          <Button type='warn' border>myBotton</Button>
+          <Button type='error' border>myBotton</Button>
+        </div>
+        <div className='row'>
+          <Button size='s'>myBotton</Button>
+          <Button>myBotton</Button>
+          <Button size='l'>myBotton</Button>
+        </div>
       </div>
-    </div>
+    </Page>
   )
 };
