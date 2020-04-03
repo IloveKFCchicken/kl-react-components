@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import cn from 'classnames'
 
+import { getClickPosition } from '../../utils/utils'
+
 import './index.less'
 
 export default function Ripple() {
@@ -11,16 +13,13 @@ export default function Ripple() {
     width: 0,
     height: 0,
   })
+  let timeRef: any = undefined
 
-  // console.log(style)
   function click(e: any) {
     e.stopPropagation()
 
-    const { pageX, pageY, target } = e
-    const rect = target.getBoundingClientRect()
-    const left = pageX - (rect.left + window.scrollX)
-    const top = pageY - (rect.top + window.scrollY)
-    const standard = Math.max(rect.width, rect.height)
+    clearTimeout(timeRef)
+    const { left, top, standard } = getClickPosition(e)
     setStyle({
       left,
       top,
@@ -28,32 +27,23 @@ export default function Ripple() {
       height: standard
     })
     setShow(true)
-
-    // setTimeout(() => {
-    //   setShow(false)
-    //   setStyle({
-    //     left: 0,
-    //     top: 0,
-    //     width: 0,
-    //     height: 0,
-    //   })
-    // }, 200)
   }
 
   function recover() {
     setShow(false)
-    setTimeout(() => {
+    timeRef = setTimeout(() => {
       setStyle({
         left: 0,
         top: 0,
         width: 0,
         height: 0,
       })
-    }, 200)
+    }, 250)
   }
 
   return (
-    <span className='kl-ripple' onMouseDown={click} onMouseUp={recover}>
+    <span className='kl-ripple'>
+      <span className='kl-ripple--cover' onMouseDown={click} onMouseUp={recover}></span>
       <span className={cn('kl-ripple--root', show && 'kl-ripple--show')} style={style}></span>
     </span>
   )

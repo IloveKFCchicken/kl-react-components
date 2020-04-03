@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { MouseEvent } from 'react';
 import cn from 'classnames';
 
 import Ripple from '../Ripple';
@@ -6,13 +6,13 @@ import Ripple from '../Ripple';
 import './index.less'
 
 interface ButtonProps {
-  children: JSX.Element[] | JSX.Element,
+  children: React.ReactNode,
   className: string,
   type: 'default' | 'primary' | 'error' | 'warn' | 'success' | 'info',
   size: 's' | 'm' | 'l',
   ripple: boolean,
   border: boolean,
-  onClick: Function
+  onClick?: (e: MouseEvent) => {}
 }
 
 Button.defaultProps = {
@@ -22,15 +22,14 @@ Button.defaultProps = {
   border: false,
 } as Partial<ButtonProps>;
 
-export default function Button(props: ButtonProps) {
-  const { children, className, type, size, ripple, border } = props
+export default function Button({ children, className, type, size, ripple, border, onClick }: ButtonProps) {
   return (
     <button className={cn("kl-component kl-button",
       className && className,
       type && `button--${type}`,
       size && `button-size--${size}`,
       border && `button--border`)
-    }>
+    } onClick={onClick}>
       <span className='button--children'>{children}</span>
       {ripple && <Ripple />}
     </button>
