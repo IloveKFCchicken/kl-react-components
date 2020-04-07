@@ -12,6 +12,8 @@ interface ButtonProps {
   size: 's' | 'm' | 'l',
   ripple: boolean,
   border: boolean,
+  text: boolean,
+  disabled: boolean,
   onClick?: (e: MouseEvent) => {}
 }
 
@@ -20,18 +22,22 @@ Button.defaultProps = {
   size: 'm',
   ripple: true,
   border: false,
+  text: false,
 } as Partial<ButtonProps>;
 
-export default function Button({ children, className, type, size, ripple, border, onClick }: ButtonProps) {
+export default function Button({ children, className, type, size, ripple, border, onClick, text, disabled }: ButtonProps) {
   return (
     <button className={cn("kl-component kl-button",
       className && className,
       type && `button--${type}`,
       size && `button-size--${size}`,
-      border && `button--border`)
-    } onClick={onClick}>
+      border && 'button--border',
+      text && 'button--text',
+      disabled && 'button--disabled')}
+      onClick={onClick}
+      disabled={disabled}>
       <span className='button--children'>{children}</span>
-      {ripple && <Ripple />}
+      {!disabled && ripple && <Ripple />}
     </button>
   )
 }

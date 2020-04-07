@@ -1,174 +1,60 @@
 @import '../../style/index.less';
 
-
-
-.kl-button {
-  border: none;
-  cursor: pointer;
-  border-radius: @button-radius;
-  border: 1px solid;
-  border-color: #eee;
-  outline: none;
-  transition: background-color .25s ease, border-color .25s ease, box-shadow .25s ease;
-  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, .12);
-  position: relative;
-
-  .button--children {
-    position: relative;
-    z-index: 1;
-  }
-
-  .kl-ripple {
-    left: -1px;
-    top: -1px;
-    width: calc(100% + 2px);
-    height: calc(100% + 2px);
-    border-radius: @button-radius;
-  }
-
-  &.button--border {
-    .kl-ripple {
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-    }
-  }
-
-  &:hover {
-    box-shadow: 0px 3px 14px 2px rgba(0, 0, 0, .12)
-  }
-
-  &:active {
-    box-shadow: 0px 5px 16px 6px rgba(0, 0, 0, .12)
-  }
-
-  .button-size-mixin();
-
-
-  //style
-  &.button--default {
-    color: @font-color-default;
-    border-color: @color-default;
-    background-color: @color-default;
-
-    &:hover {
-      border-color: darken(@color-default, 10%);
-      background-color: darken(@color-default, 10%);
-    }
-
-
-    &.button--border {
-      .button--border-mixin(@color-default, darken(@color-default, 10%), lighten(@color-default, 8%), @color-default);
-      color: @font-color-default;
-    }
-  }
-
-  &.button--primary {
-    color: @font-color-primary;
-    border-color: @color-primary;
-    background-color: @color-primary;
-
-    &:hover {
-      border-color: darken(@color-primary, 10%);
-      background-color: darken(@color-primary, 10%);
-    }
-
-    &.button--border {
-      .button--border-mixin(lighten(@color-primary, 10%), @color-primary, lighten(@color-primary, 40%), lighten(@color-primary, 30%));
-    }
-  }
-
-  &.button--success {
-    color: @font-color-success;
-    border-color: @color-success;
-    background-color: @color-success;
-
-    &:hover {
-      border-color: darken(@color-success, 10%);
-      background-color: darken(@color-success, 10%);
-    }
-
-    &.button--border {
-      .button--border-mixin(lighten(@color-success, 10%), @color-success, lighten(@color-success, 45%), lighten(@color-success, 25%));
-    }
-  }
-
-  &.button--info {
-    color: @font-color-info;
-    border-color: @color-info;
-    background-color: @color-info;
-
-    &:hover {
-      border-color: darken(@color-info, 10%);
-      background-color: darken(@color-info, 10%);
-    }
-
-    &.button--border {
-      .button--border-mixin(lighten(@color-info, 10%), @color-info, lighten(@color-info, 40%), lighten(@color-info, 30%));
-    }
-  }
-
-  &.button--error {
-    color: @font-color-error;
-    border-color: @color-error;
-    background-color: @color-error;
-
-    &:hover {
-      border-color: darken(@color-error, 10%);
-      background-color: darken(@color-error, 10%);
-    }
-
-    &.button--border {
-      .button--border-mixin(lighten(@color-error, 10%), @color-error, lighten(@color-error, 50%), lighten(@color-error, 35%));
-    }
-  }
-
-  &.button--warn {
-    color: @font-color-warn;
-    border-color: @color-warn;
-    background-color: @color-warn;
-
-    &:hover {
-      border-color: darken(@color-warn, 10%);
-      background-color: darken(@color-warn, 10%);
-    }
-
-    &.button--border {
-      .button--border-mixin(lighten(@color-warn, 10%), @color-warn, lighten(@color-warn, 30%), lighten(@color-warn, 20%));
-      color: @font-color-warn;
-    }
-  }
-}
-
-
 // 32 40 48
 .button-size-mixin {
-
   &.button-size--s {
     font-size: 13px;
     line-height: 20px;
-    padding: 6px 10px;
+    padding: 5px 10px;
   }
 
   &.button-size--m {
     font-size: 14px;
     line-height: 24px;
-    padding: 8px 16px;
+    padding: 7px 16px;
   }
 
   &.button-size--l {
     font-size: 15px;
     line-height: 24px;
-    padding: 10px 24px;
+    padding: 11px 24px;
   }
 }
 
+// .button-boder-size-mixin {
+//   &.button-size--s {
+//     font-size: 13px;
+//     line-height: 20px;
+//     padding: 5px 10px;
+//   }
 
-.button--style-mixin() {}
+//   &.button-size--m {
+//     font-size: 14px;
+//     line-height: 24px;
+//     padding: 7px 16px;
+//   }
 
-// color同@border-hover
-.button--border-mixin(@border, @border-hover, @bg-hover, @ripple) {
+//   &.button-size--l {
+//     font-size: 15px;
+//     line-height: 24px;
+//     padding: 11px 24px;
+//   }
+// }
+
+// 原始样式
+.button-style-mixin(@color, @border, @bg, @border-hover, @bg-hover) {
+  color: @color;
+  border-color: @border;
+  background-color: @bg;
+
+  &:not(.button--disabled):hover {
+    border-color: @border-hover;
+    background-color: @bg-hover;
+  }
+}
+
+// border类型按钮 color同@border-hover
+.button-border-mixin(@border, @border-hover, @bg-hover, @ripple) {
   background-color: transparent;
   box-shadow: none;
   color: @border-hover;
@@ -178,8 +64,211 @@
     background-color: @ripple;
   }
 
-  &:hover {
-    border-color: @border-hover;
+  &:not(.button--disabled):hover {
+    // border-color: @border-hover;
+    border-color: @border;
     background-color: @bg-hover;
+  }
+}
+
+.button-text-mixin(@color, @bg-hover, @ripple) {
+  border: none;
+  background-color: transparent;
+  .button-border-mixin(transparent, transparent, @bg-hover, @ripple);
+  color: @color;
+}
+
+
+.kl-button {
+  border: none;
+  cursor: pointer;
+  border-radius: @button-radius;
+  border: 1px solid;
+  border-color: #eee;
+  outline: none;
+  transition: background-color .15s ease, border-color .25s ease, box-shadow .25s ease;
+  box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.12);
+  position: relative;
+  box-sizing: border-box;
+
+  .button-size-mixin();
+
+  .kl-ripple {
+    left: -1px;
+    top: -1px;
+    width: calc(100% + 2px);
+    height: calc(100% + 2px);
+    border-radius: @button-radius;
+  }
+
+  &:hover {
+    box-shadow: 0px 3px 14px 2px rgba(0, 0, 0, .12), 0px 2px 10px 0px rgba(0, 0, 0, 0.12);
+  }
+
+  &:active {
+    box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+  }
+
+  .button--children {
+    position: relative;
+    z-index: 1;
+  }
+
+  &.button {
+    &--border {
+      .kl-ripple {
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    //style
+    &--default {
+      .button-style-mixin(@font-color-default,
+        @color-default,
+        @color-default,
+        darken(@color-default, 10%),
+        darken(@color-default, 10%));
+
+      .kl-ripple--root {
+        background-color: darken(@color-default, 20%);
+      }
+
+      &.button--border {
+        .button-border-mixin(darken(@color-default, 10%),
+          darken(@color-default, 10%),
+          lighten(@color-default, 8%),
+          @color-default);
+        color: @font-color-default;
+      }
+
+      &.button--text {
+        .button-text-mixin(@font-color-default,
+          lighten(@color-default, 8%),
+          @color-default)
+      }
+    }
+
+    &--primary {
+      .button-style-mixin(@font-color-primary,
+        @color-primary,
+        @color-primary,
+        darken(@color-primary, 10%),
+        darken(@color-primary, 10%));
+
+      &.button--border {
+        .button-border-mixin(lighten(@color-primary, 10%),
+          @color-primary,
+          lighten(@color-primary, 50%),
+          lighten(@color-primary, 40%));
+      }
+
+      &.button--text {
+        .button-text-mixin(@color-primary,
+          lighten(@color-primary, 50%),
+          lighten(@color-primary, 40%))
+      }
+    }
+
+    &--success {
+      .button-style-mixin(@font-color-success,
+        @color-success,
+        @color-success,
+        darken(@color-success, 10%),
+        darken(@color-success, 10%));
+
+      &.button--border {
+        .button-border-mixin(lighten(@color-success, 10%),
+          @color-success,
+          lighten(@color-success, 50%),
+          lighten(@color-success, 35%));
+      }
+
+      &.button--text {
+        .button-text-mixin(@color-success,
+          lighten(@color-success, 50%),
+          lighten(@color-success, 35%));
+      }
+    }
+
+    &--info {
+      .button-style-mixin(@font-color-info,
+        @color-info,
+        @color-info,
+        darken(@color-info, 10%),
+        darken(@color-info, 10%));
+
+      &.button--border {
+        .button-border-mixin(lighten(@color-info, 10%),
+          @color-info,
+          lighten(@color-info, 40%),
+          lighten(@color-info, 30%));
+      }
+
+      &.button--text {
+        .button-text-mixin(@color-info,
+          lighten(@color-info, 40%),
+          lighten(@color-info, 30%));
+      }
+    }
+
+    &--error {
+      .button-style-mixin(@font-color-error,
+        @color-error,
+        @color-error,
+        darken(@color-error, 10%),
+        darken(@color-error, 10%));
+
+      &.button--border {
+        .button-border-mixin(lighten(@color-error, 10%),
+          @color-error,
+          lighten(@color-error, 50%),
+          lighten(@color-error, 40%));
+      }
+
+      &.button--text {
+        .button-text-mixin(@color-error,
+          lighten(@color-error, 50%),
+          lighten(@color-error, 40%));
+      }
+    }
+
+    &--warn {
+      .button-style-mixin(@font-color-warn,
+        @color-warn,
+        @color-warn,
+        darken(@color-warn, 10%),
+        darken(@color-warn, 10%));
+
+      &.button--border {
+        .button-border-mixin(lighten(@color-warn, 10%),
+          @color-warn,
+          lighten(@color-warn, 30%),
+          lighten(@color-warn, 20%));
+        color: @font-color-warn;
+      }
+
+      &.button--text {
+        .button-text-mixin(@font-color-warn,
+          lighten(@color-warn, 30%),
+          lighten(@color-warn, 20%));
+      }
+    }
+  }
+
+  &.button--disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    box-shadow: none;
+
+    &:hover {
+      box-shadow: none;
+    }
+
+    &:active {
+      box-shadow: none;
+    }
   }
 }
