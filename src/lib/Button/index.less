@@ -1,7 +1,7 @@
 @import '../../style/index.less';
 
 // 32 40 48
-.button-size-mixin {
+.mixin-button-size {
   &.button-size--s {
     font-size: 13px;
     line-height: 20px;
@@ -21,28 +21,8 @@
   }
 }
 
-// .button-boder-size-mixin {
-//   &.button-size--s {
-//     font-size: 13px;
-//     line-height: 20px;
-//     padding: 5px 10px;
-//   }
-
-//   &.button-size--m {
-//     font-size: 14px;
-//     line-height: 24px;
-//     padding: 7px 16px;
-//   }
-
-//   &.button-size--l {
-//     font-size: 15px;
-//     line-height: 24px;
-//     padding: 11px 24px;
-//   }
-// }
-
 // 原始样式
-.button-style-mixin(@color, @border, @bg, @border-hover, @bg-hover) {
+.mixin-button-style(@color, @border, @bg, @border-hover, @bg-hover) {
   color: @color;
   border-color: @border;
   background-color: @bg;
@@ -54,7 +34,7 @@
 }
 
 // border类型按钮 color同@border-hover
-.button-border-mixin(@border, @border-hover, @bg-hover, @ripple) {
+.mixin-button-border(@border, @border-hover, @bg-hover, @ripple) {
   background-color: transparent;
   box-shadow: none;
   color: @border-hover;
@@ -71,10 +51,10 @@
   }
 }
 
-.button-text-mixin(@color, @bg-hover, @ripple) {
+.mixin-button-text(@color, @bg-hover, @ripple) {
   border: none;
   background-color: transparent;
-  .button-border-mixin(transparent, transparent, @bg-hover, @ripple);
+  .mixin-button-border(transparent, transparent, @bg-hover, @ripple);
   color: @color;
 }
 
@@ -91,7 +71,7 @@
   position: relative;
   box-sizing: border-box;
 
-  .button-size-mixin();
+  .mixin-button-size();
 
   .kl-ripple {
     left: -1px;
@@ -126,7 +106,7 @@
 
     //style
     &--default {
-      .button-style-mixin(@font-color-default,
+      .mixin-button-style(@font-color-default,
         @color-default,
         @color-default,
         darken(@color-default, 10%),
@@ -137,7 +117,7 @@
       }
 
       &.button--border {
-        .button-border-mixin(darken(@color-default, 10%),
+        .mixin-button-border(darken(@color-default, 10%),
           darken(@color-default, 10%),
           lighten(@color-default, 8%),
           @color-default);
@@ -145,105 +125,105 @@
       }
 
       &.button--text {
-        .button-text-mixin(@font-color-default,
+        .mixin-button-text(@font-color-default,
           lighten(@color-default, 8%),
           @color-default)
       }
     }
 
     &--primary {
-      .button-style-mixin(@font-color-primary,
+      .mixin-button-style(@font-color-primary,
         @color-primary,
         @color-primary,
         darken(@color-primary, 10%),
         darken(@color-primary, 10%));
 
       &.button--border {
-        .button-border-mixin(lighten(@color-primary, 10%),
+        .mixin-button-border(lighten(@color-primary, 10%),
           @color-primary,
           lighten(@color-primary, 50%),
           lighten(@color-primary, 40%));
       }
 
       &.button--text {
-        .button-text-mixin(@color-primary,
+        .mixin-button-text(@color-primary,
           lighten(@color-primary, 50%),
           lighten(@color-primary, 40%))
       }
     }
 
     &--success {
-      .button-style-mixin(@font-color-success,
+      .mixin-button-style(@font-color-success,
         @color-success,
         @color-success,
         darken(@color-success, 10%),
         darken(@color-success, 10%));
 
       &.button--border {
-        .button-border-mixin(lighten(@color-success, 10%),
+        .mixin-button-border(lighten(@color-success, 10%),
           @color-success,
           lighten(@color-success, 50%),
           lighten(@color-success, 35%));
       }
 
       &.button--text {
-        .button-text-mixin(@color-success,
+        .mixin-button-text(@color-success,
           lighten(@color-success, 50%),
           lighten(@color-success, 35%));
       }
     }
 
     &--info {
-      .button-style-mixin(@font-color-info,
+      .mixin-button-style(@font-color-info,
         @color-info,
         @color-info,
         darken(@color-info, 10%),
         darken(@color-info, 10%));
 
       &.button--border {
-        .button-border-mixin(lighten(@color-info, 10%),
+        .mixin-button-border(lighten(@color-info, 10%),
           @color-info,
           lighten(@color-info, 40%),
           lighten(@color-info, 30%));
       }
 
       &.button--text {
-        .button-text-mixin(@color-info,
+        .mixin-button-text(@color-info,
           lighten(@color-info, 40%),
           lighten(@color-info, 30%));
       }
     }
 
     &--error {
-      .button-style-mixin(@font-color-error,
+      .mixin-button-style(@font-color-error,
         @color-error,
         @color-error,
         darken(@color-error, 10%),
         darken(@color-error, 10%));
 
       &.button--border {
-        .button-border-mixin(lighten(@color-error, 10%),
+        .mixin-button-border(lighten(@color-error, 10%),
           @color-error,
           lighten(@color-error, 50%),
           lighten(@color-error, 40%));
       }
 
       &.button--text {
-        .button-text-mixin(@color-error,
+        .mixin-button-text(@color-error,
           lighten(@color-error, 50%),
           lighten(@color-error, 40%));
       }
     }
 
     &--warn {
-      .button-style-mixin(@font-color-warn,
+      .mixin-button-style(@font-color-warn,
         @color-warn,
         @color-warn,
         darken(@color-warn, 10%),
         darken(@color-warn, 10%));
 
       &.button--border {
-        .button-border-mixin(lighten(@color-warn, 10%),
+        .mixin-button-border(lighten(@color-warn, 10%),
           @color-warn,
           lighten(@color-warn, 30%),
           lighten(@color-warn, 20%));
@@ -251,7 +231,7 @@
       }
 
       &.button--text {
-        .button-text-mixin(@font-color-warn,
+        .mixin-button-text(@font-color-warn,
           lighten(@color-warn, 30%),
           lighten(@color-warn, 20%));
       }
